@@ -9,7 +9,17 @@ import './App.css';
 function App() {
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState("global");
+  const [countryInfo, setCountryInfo] = useState({})
   
+  useEffect(() => {
+    const fetchData = async() => {
+      const res = await fetch('https://disease.sh/v3/covid-19/all')
+      const response = await res.json()
+      console.log(response)
+    }
+    fetchData();
+  }, [])
+
   useEffect(() => {
 const getCountries = async () => {
  const response = await (await fetch('https://disease.sh/v3/covid-19/countries'))
@@ -23,9 +33,18 @@ const getCountries = async () => {
 getCountries()
   }, [])
 
-  const onCountryChange = async (e) => {
+  const onCountryChange =  async (e) => {
      let countryCode = e.target.value
-     setCountry(countryCode)
+
+    const url = countryCode === 'global' ? 'https://disease.sh/v3/covid-19/all'
+    : `https://disease.sh/v3/covid-19/countries/${countryCode}`;
+
+    const res = await fetch(url)
+
+    const response = res.json()
+
+    setCountry(countryCode)
+    setCountryInfo(response)
   }
   return (
     <div className="app">
