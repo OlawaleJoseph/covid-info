@@ -3,7 +3,8 @@ import {
           FormControl,
           MenuItem,
           Select
-          } from '@material-ui/core'
+          } from '@material-ui/core';
+import StatBox from './components/StatBox'
 import './App.css';
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
     const fetchData = async() => {
       const res = await fetch('https://disease.sh/v3/covid-19/all')
       const response = await res.json()
-      console.log(response)
+      setCountryInfo(response)
     }
     fetchData();
   }, [])
@@ -41,10 +42,11 @@ getCountries()
 
     const res = await fetch(url)
 
-    const response = res.json()
+    const response = await res.json()
 
     setCountry(countryCode)
     setCountryInfo(response)
+  
   }
   return (
     <div className="app">
@@ -64,6 +66,11 @@ getCountries()
           }
         </Select>
       </FormControl>
+      </div>
+      <div className="app__stats">
+        <StatBox title='Confirmed Cases' cases={countryInfo.todayCases} total={countryInfo.cases} />
+        <StatBox title='Recovered' cases={countryInfo.todayRecovered} total={countryInfo.recovered} />
+        <StatBox title='Deaths' cases={countryInfo.todayDeaths} total={countryInfo.deaths} />
       </div>
     </div>
   );
