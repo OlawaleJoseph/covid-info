@@ -90,7 +90,7 @@ function App() {
             <StatBox title='Recovered' cases={countryInfo.todayRecovered} total={countryInfo.recovered} />
             <StatBox title='Deaths' cases={countryInfo.todayDeaths} total={countryInfo.deaths} />
           </div>
-          <Map countries={mapCountries} center={mapCenter} zoom={mapZoom} />
+          <Map countries={mapCountries} center={mapCenter} zoom={mapZoom} caseType={caseType} />
         </div>
       <div className="app__right">
         <Card>
