@@ -11,6 +11,7 @@ import {
           } from '@material-ui/core';
 import StatBox from './components/StatBox';
 import Table from './components/Table';
+import { formatNumber } from './utils/helper'
 import './App.css';
 import Graph from './components/Graph';
 
@@ -61,28 +62,28 @@ function App() {
   return (
     <div className="app">
       <div className="app__left">
-        <div className="app__header  ">
-          <h1> Covid 19 Tracker</h1>
-          <FormControl className="app__dropdown">
-          <Select 
-            variant="outlined"
-            value={country}
-            onChange={onCountryChange}
-          >
-            <MenuItem value="global">Global</MenuItem>
-            {
-              countries.map((country) => (
-                <MenuItem value={country.value}>{country.name}</MenuItem>
-              ))
-            }
-          </Select>
-        </FormControl>
-        </div>
-        <div className="app__stats">
-        <StatBox title='Confirmed' cases={countryInfo.todayCases} total={countryInfo.cases} />
-        <StatBox title='Recovered' cases={countryInfo.todayRecovered} total={countryInfo.recovered} />
-        <StatBox title='Deaths' cases={countryInfo.todayDeaths} total={countryInfo.deaths} />
+      <div className="app__header">
+        <h1> Covid 19 Tracker</h1>
+        <FormControl className="app__dropdown">
+        <Select 
+          variant="outlined"
+          value={country}
+          onChange={onCountryChange}
+        >
+          <MenuItem value="global">Global</MenuItem>
+          {
+            countries.map((country) => (
+              <MenuItem value={country.value}>{country.name}</MenuItem>
+            ))
+          }
+        </Select>
+      </FormControl>
       </div>
+        <div className="app__stats">
+          <StatBox title='Confirmed' cases={formatNumber(countryInfo.todayCases)} total={formatNumber(countryInfo.cases)} />
+          <StatBox title='Recovered' cases={formatNumber(countryInfo.todayRecovered)} total={formatNumber(countryInfo.recovered)} />
+          <StatBox title='Deaths' cases={formatNumber(countryInfo.todayDeaths)} total={formatNumber(countryInfo.deaths)} />
+        </div>
       </div>
       <div className="app__right">
         <Card>

@@ -1,19 +1,20 @@
 import React from 'react'
-import {Card, CardContent, Typography} from '@material-ui/core'
+import {Card, CardContent, Typography} from '@material-ui/core';
+import '../css/stats.css';
 
 function StatBox({title, cases, total}) {
   return (
-    <div>
+    <div className='stat-card'>
       <Card>
         <CardContent>
-          <Typography className="infobox_title" color="textSecondary">
+          <Typography className="stat_title" color="textSecondary">
             {title}
           </Typography>
-          <Typography className="infobox_title" color="textSecondary">
-            Today: {cases}
-          </Typography>
-          <Typography className="infobox_title" color="textSecondary">
-            Total: {total}
+          <h3 className="stat_cases">
+            {cases}
+          </h3>
+          <Typography className="stat_total" color="textSecondary">
+            {total} Total
           </Typography>
         </CardContent>
       </Card>
