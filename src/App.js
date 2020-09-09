@@ -15,7 +15,6 @@ function App() {
     const fetchData = async() => {
       const res = await fetch('https://disease.sh/v3/covid-19/all')
       const response = await res.json()
-      console.log(response)
     }
     fetchData();
   }, [])
