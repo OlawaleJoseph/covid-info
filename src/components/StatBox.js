@@ -2,10 +2,10 @@ import React from 'react'
 import {Card, CardContent, Typography} from '@material-ui/core';
 import '../css/stats.css';
 
-function StatBox({title, cases, total}) {
+function StatBox({title, cases, total, onClick}) {
   return (
     <div className='stat-card'>
-      <Card>
+      <Card onClick={onClick}>
         <CardContent>
           <Typography className="stat_title" color="textSecondary">
             {title}
