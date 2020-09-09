@@ -1,5 +1,6 @@
 .stat-card {
   flex: 1;
+  cursor: pointer;
 }
 
 .stat-card:not(:last-child) {

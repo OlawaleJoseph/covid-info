@@ -5,7 +5,7 @@ import numeral from 'numeral';
 export const drawCircleOnMap = (countries, caseType = "cases") => {
   const mapColors = {
     cases: {
-      color: '#cc1034',
+      color: '#ffcc00',
       multiplier: 500
     },
     recovered: {

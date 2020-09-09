@@ -1,6 +1,6 @@
 import React from 'react';
 import numeral from 'numeral'
-import '../styles/table.css'
+import '../css/table.css'
 
 function Table({countries}) {
   return (
