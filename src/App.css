@@ -15,9 +15,30 @@ body {
   margin-bottom: 20px;
 }
 
+.app {
+  padding: 20px;
+}
+
+.app__left {
+  flex: 0.70;
+  margin-bottom: 20px;
+}
+
 .app__stats {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.graph {
+  margin-top: 3rem;
+}
+
+@media (min-width: 990px) {
+
+  .app {
+    display: flex;
+    justify-content: space-evenly;
+  }
 }

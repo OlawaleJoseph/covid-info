@@ -10,10 +10,10 @@ function StatBox({title, cases, total}) {
             {title}
           </Typography>
           <Typography className="infobox_title" color="textSecondary">
-            {cases}
+            Today: {cases}
           </Typography>
           <Typography className="infobox_title" color="textSecondary">
-            {total}
+            Total: {total}
           </Typography>
         </CardContent>
       </Card>
