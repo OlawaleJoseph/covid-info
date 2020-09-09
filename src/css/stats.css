@@ -1,0 +1,22 @@
+.stat-card {
+  flex: 1;
+}
+
+.stat-card:not(:last-child) {
+  margin-right: 15px;
+}
+
+.stat_title {
+  font-size: 1.2rem !important;
+}
+
+.stat_cases {
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 1rem !important;
+  color: #b91634;
+}
+
+.stat_total {
+  font-weight: 600 !important;
+}

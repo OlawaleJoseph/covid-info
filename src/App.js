@@ -5,6 +5,7 @@ import {
           Select
           } from '@material-ui/core';
 import StatBox from './components/StatBox'
+import { formatNumber } from './utils/helper'
 import './App.css';
 
 function App() {
@@ -68,9 +69,9 @@ getCountries()
       </FormControl>
       </div>
       <div className="app__stats">
-        <StatBox title='Confirmed Cases' cases={countryInfo.todayCases} total={countryInfo.cases} />
-        <StatBox title='Recovered' cases={countryInfo.todayRecovered} total={countryInfo.recovered} />
-        <StatBox title='Deaths' cases={countryInfo.todayDeaths} total={countryInfo.deaths} />
+        <StatBox title='Confirmed' cases={formatNumber(countryInfo.todayCases)} total={formatNumber(countryInfo.cases)} />
+        <StatBox title='Recovered' cases={formatNumber(countryInfo.todayRecovered)} total={formatNumber(countryInfo.recovered)} />
+        <StatBox title='Deaths' cases={formatNumber(countryInfo.todayDeaths)} total={formatNumber(countryInfo.deaths)} />
       </div>
     </div>
   );
