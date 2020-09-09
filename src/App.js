@@ -13,13 +13,18 @@ import StatBox from './components/StatBox';
 import Table from './components/Table';
 import './App.css';
 import Graph from './components/Graph';
+import Map from './components/Map';
+import 'leaflet/dist/leaflet.css'
 
 function App() {
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState("global");
-  const [countryInfo, setCountryInfo] = useState({})
-  const [tableData, setTableData] = useState([])
-  const [caseType, setCaseType] = useState('cases')
+  const [countryInfo, setCountryInfo] = useState({});
+  const [tableData, setTableData] = useState([]);
+  const [caseType, setCaseType] = useState('cases');
+  const [mapCenter, setMapCenter] = useState({lat: 34.80746, lng: -40.4796});
+  const [mapZoom, setMapZoom] = useState(3);
+  const [mapCountries, setMapCountries] = useState([]);
   
   useEffect(() => {
     const fetchData = async() => {
@@ -39,7 +44,8 @@ function App() {
       value: country.countryInfo.iso2
       }));
     setCountries(countries);
-    setTableData(res.sort((a, b) =>  b.cases - a.cases))
+    setMapCountries(res);
+    setTableData(res.sort((a, b) =>  b.cases - a.cases));
   }
     getCountries()
   }, [])
@@ -56,7 +62,8 @@ function App() {
 
     setCountry(countryCode)
     setCountryInfo(response)
-  
+    if (countryCode !== 'worldwide') setMapCenter([response.countryInfo.lat, response.countryInfo.long])
+    setMapZoom(4)
   }
   return (
     <div className="app">
@@ -78,12 +85,13 @@ function App() {
           </Select>
         </FormControl>
         </div>
-        <div className="app__stats">
-        <StatBox title='Confirmed' cases={countryInfo.todayCases} total={countryInfo.cases} />
-        <StatBox title='Recovered' cases={countryInfo.todayRecovered} total={countryInfo.recovered} />
-        <StatBox title='Deaths' cases={countryInfo.todayDeaths} total={countryInfo.deaths} />
-      </div>
-      </div>
+          <div className="app__stats">
+            <StatBox title='Confirmed' cases={countryInfo.todayCases} total={countryInfo.cases} />
+            <StatBox title='Recovered' cases={countryInfo.todayRecovered} total={countryInfo.recovered} />
+            <StatBox title='Deaths' cases={countryInfo.todayDeaths} total={countryInfo.deaths} />
+          </div>
+          <Map countries={mapCountries} center={mapCenter} zoom={mapZoom} />
+        </div>
       <div className="app__right">
         <Card>
           <CardContent>
