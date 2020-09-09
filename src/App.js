@@ -3,7 +3,9 @@ import {
           FormControl,
           MenuItem,
           Select
-          } from '@material-ui/core'
+          } from '@material-ui/core';
+import StatBox from './components/StatBox'
+import { formatNumber } from './utils/helper'
 import './App.css';
 
 function App() {
@@ -15,6 +17,7 @@ function App() {
     const fetchData = async() => {
       const res = await fetch('https://disease.sh/v3/covid-19/all')
       const response = await res.json()
+      setCountryInfo(response)
     }
     fetchData();
   }, [])
@@ -40,10 +43,11 @@ getCountries()
 
     const res = await fetch(url)
 
-    const response = res.json()
+    const response = await res.json()
 
     setCountry(countryCode)
     setCountryInfo(response)
+  
   }
   return (
     <div className="app">
@@ -63,6 +67,11 @@ getCountries()
           }
         </Select>
       </FormControl>
+      </div>
+      <div className="app__stats">
+        <StatBox title='Confirmed' cases={formatNumber(countryInfo.todayCases)} total={formatNumber(countryInfo.cases)} />
+        <StatBox title='Recovered' cases={formatNumber(countryInfo.todayRecovered)} total={formatNumber(countryInfo.recovered)} />
+        <StatBox title='Deaths' cases={formatNumber(countryInfo.todayDeaths)} total={formatNumber(countryInfo.deaths)} />
       </div>
     </div>
   );
