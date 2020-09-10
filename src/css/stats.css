@@ -1,5 +1,6 @@
 .stat-card {
   flex: 1;
+  cursor: pointer;
 }
 
 .stat-card:not(:last-child) {
@@ -19,4 +20,24 @@
 
 .stat_total {
   font-weight: 600 !important;
+}
+
+.active-cases {
+  border-top: 10px solid #ffcc00 ;
+}
+
+.active-recovered {
+  border-top: 10px solid #7dd71d;
+}
+
+.active-deaths {
+  border-top: 10px solid #b91634;
+}
+
+.cases {
+  color: #ffcc00 !important;
+}
+
+.recovered {
+  color: #7dd71d !important;
 }

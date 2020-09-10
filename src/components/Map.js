@@ -1,7 +1,7 @@
 import React from 'react';
 import { Map as LeafletMap, TileLayer } from 'react-leaflet';
-import '../styles/map.css'
-import { drawCircleOnMap } from '../utils/maputil'
+import '../css/map.css'
+import { drawCircleOnMap } from '../utils/mapUtil'
 
 function Map({center, zoom, countries, caseType}) {
   return (

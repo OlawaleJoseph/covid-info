@@ -87,20 +87,43 @@ function App() {
       </FormControl>
       </div>
         <div className="app__stats">
-          <StatBox title='Confirmed' cases={formatNumber(countryInfo.todayCases)} total={formatNumber(countryInfo.cases)} />
-          <StatBox title='Recovered' cases={formatNumber(countryInfo.todayRecovered)} total={formatNumber(countryInfo.recovered)} />
-          <StatBox title='Deaths' cases={formatNumber(countryInfo.todayDeaths)} total={formatNumber(countryInfo.deaths)} />
+          <StatBox
+            caseType={`${caseType}`}
+            yellow={true}
+            active={caseType === 'cases'}
+            title='Confirmed'
+            cases={formatNumber(countryInfo.todayCases)}
+            total={formatNumber(countryInfo.cases)}
+            onClick={() => setCaseType('cases')}
+          />
+          <StatBox
+            caseType={caseType}
+            green={true}
+            active={caseType === 'recovered'}
+            title='Recovered'
+            cases={formatNumber(countryInfo.todayRecovered)}
+            total={formatNumber(countryInfo.recovered)}
+            onClick={() => setCaseType('recovered')} 
+          />
+          <StatBox
+            caseType={caseType}
+            active={caseType === 'deaths'}
+            title='Deaths'
+            cases={formatNumber(countryInfo.todayDeaths)}
+            total={formatNumber(countryInfo.deaths)}
+            onClick={() => setCaseType('deaths')}
+          />
         </div>
         <Map countries={mapCountries} center={mapCenter} zoom={mapZoom} caseType={caseType} />
       </div>
       <div className="app__right">
         <Card>
           <CardContent>
-            <h3>Table</h3>
+            <h3>Cases By Country</h3>
             <Table countries={tableData} /> 
 
             <div className="graph">
-              <h3>New Cases</h3>
+              <h3>Last 30 Days Cases</h3>
               <FormControl component="fieldset">
                 <RadioGroup aria-label="gender" name="gender1" value={caseType} onChange={(e) => setCaseType(e.target.value)} row>
                   <FormControlLabel value="cases" control={<Radio />} label="Confirmed" />
