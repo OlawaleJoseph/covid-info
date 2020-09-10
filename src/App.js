@@ -88,18 +88,26 @@ function App() {
       </div>
         <div className="app__stats">
           <StatBox
+            caseType={`${caseType}`}
+            yellow={true}
+            active={caseType === 'cases'}
             title='Confirmed'
             cases={formatNumber(countryInfo.todayCases)}
             total={formatNumber(countryInfo.cases)}
             onClick={() => setCaseType('cases')}
           />
           <StatBox
+            caseType={caseType}
+            green={true}
+            active={caseType === 'recovered'}
             title='Recovered'
             cases={formatNumber(countryInfo.todayRecovered)}
             total={formatNumber(countryInfo.recovered)}
             onClick={() => setCaseType('recovered')} 
           />
           <StatBox
+            caseType={caseType}
+            active={caseType === 'deaths'}
             title='Deaths'
             cases={formatNumber(countryInfo.todayDeaths)}
             total={formatNumber(countryInfo.deaths)}

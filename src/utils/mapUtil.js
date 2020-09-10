@@ -1,30 +1,17 @@
 import React from 'react';
 import { Circle, Popup } from 'react-leaflet';
 import numeral from 'numeral';
+import {colors } from './helper'
 
 export const drawCircleOnMap = (countries, caseType = "cases") => {
-  const mapColors = {
-    cases: {
-      color: '#ffcc00',
-      multiplier: 500
-    },
-    recovered: {
-      color: '#7dd71d',
-      multiplier: 600
-    },
-    deaths: {
-      color: '#fb443b',
-      multiplier: 1500
-    }
-  }
 
   return countries.map((country) => (
      <Circle
       center={[country.countryInfo.lat, country.countryInfo.long]}fillOpacity={0.4}
-      color={mapColors[caseType].color}
-      fillColor={mapColors[caseType].color}
+      color={colors[caseType].color}
+      fillColor={colors[caseType].color}
       radius={
-        Math.sqrt(country[caseType]) * mapColors[caseType].multiplier
+        Math.sqrt(country[caseType]) * colors[caseType].multiplier
       }
      >
        <Popup>
