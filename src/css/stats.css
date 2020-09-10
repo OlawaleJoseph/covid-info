@@ -1,0 +1,43 @@
+.stat-card {
+  flex: 1;
+  cursor: pointer;
+}
+
+.stat-card:not(:last-child) {
+  margin-right: 15px;
+}
+
+.stat_title {
+  font-size: 1.2rem !important;
+}
+
+.stat_cases {
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 1rem !important;
+  color: #b91634;
+}
+
+.stat_total {
+  font-weight: 600 !important;
+}
+
+.active-cases {
+  border-top: 10px solid #ffcc00 ;
+}
+
+.active-recovered {
+  border-top: 10px solid #7dd71d;
+}
+
+.active-deaths {
+  border-top: 10px solid #b91634;
+}
+
+.cases {
+  color: #ffcc00 !important;
+}
+
+.recovered {
+  color: #7dd71d !important;
+}
