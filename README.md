@@ -32,8 +32,8 @@ This is simple react that app that gives the latest statistics on COVID-19 aroun
 - Clone repo to your local `git clone git@github.com:OlawaleJoseph/team-save.git`
 - cd into the cloned repo
 - Open a terminal in the root of the app
-- Run `npm istall`
-- Run `yarn start`
+- Run `npm install`
+- Run `npm start`
 - Open http://localhost:3000/ in your browser.
 
 ## Author
