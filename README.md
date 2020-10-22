@@ -1,7 +1,7 @@
 # COVID-19 UPDATE
 
 # README
-This is simple react that app that gives the latest statistics on COVID-19 around the globe.
+This is simple react that app that pulls data from DISEASES.SH API to enable users view the ccurrent state of the COVID-19 pandemic in all countries   
 
 ## Features
 
